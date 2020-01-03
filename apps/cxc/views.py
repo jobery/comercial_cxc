@@ -31,10 +31,10 @@ def ListaCliente(request):
 def EditarCliente(request,id):
     cliente = Cliente.objects.get(id= id)
     if request.method == 'GET':
-        form = Cliente(instance = cliente)
+        form = ClienteForm(instance = cliente)
     else:
         form = ClienteForm(request.POST,instance = cliente)
         if form.is_valid():
             form.save()
-        return redirect('index')
+        return redirect('listacliente')
     return render(request,'cliente/crearcliente.html',{'form':form})
