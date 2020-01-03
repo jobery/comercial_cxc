@@ -38,3 +38,10 @@ def EditarCliente(request,id):
             form.save()
         return redirect('listacliente')
     return render(request,'cliente/crearcliente.html',{'form':form})
+
+def EliminarCliente(request,id):
+    cliente = Cliente.objects.get(id = id)
+    if request.method == 'POST':
+        cliente.delete()
+        return redirect('listacliente')
+    return render(request,'cliente/eliminarcliente.html',{'cliente':cliente})
