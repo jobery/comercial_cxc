@@ -1,0 +1,44 @@
+
+{% extends 'base/base.html' %}
+{% block title %}Lista Clientes{% endblock %}
+{% block header %}
+<h1 class="h1">Lista de Clientes</h1>
+{% endblock %}
+{% block content %}
+<div class="btn-group-toggle" data-toggle="buttons">
+    <a class="btn btn-success" href="{% url 'crearcliente' %}" role="button">Crear</a>
+</div>
+<table class="table">
+    <thead class="table-dark">
+        <tr>
+            <td>Id</td>
+            <td>Nombre</td>
+            <td>Dui</td>
+            <td>Direccion</td>
+            <td>Telefono</td>
+            <td>Acciones</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for cliente in object_list %}
+        <tr>
+            <td>{{ cliente.id }}</td>
+            <td>{{ cliente.nombre }}</td>
+            <td>{{ cliente.dui }}</td>
+            <td>{{ cliente.direccion }}</td>
+            <td>{{ cliente.telefono }}</td> 
+            <td>
+                <a class="btn btn-warning" href="{% url 'editarcliente' cliente.id %}" role="button">Editar</a>
+                <a class="btn btn-danger" href="{% url 'eliminarcliente' cliente.id %}" role="button">Eliminar</a>                           
+            </td>
+        </tr>
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td><h2 class="h2">No Existe Registros</h2></td>
+        </tr>
+        {% endif %}
+    </tbody>
+</table>
+{% endblock %}

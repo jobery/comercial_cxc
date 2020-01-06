@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Eliminar Cliente</title>
-</head>
-<body>
-    <form action="" method="post">
-        {% csrf_token %}
-        <h1>¿ Esta Seguro de Eliminar al Cliente {{ cliente.nombre }} ?</h1>
-        <button type="submit">Eliminar</button>
-        <button><a href="{% url 'listacliente' %}">Cancelar</a></button>
-    </form>
-</body>
-</html>
+
+{% extends 'base/base.html' %}
+{% block title %}Eliminar Cliente{% endblock %}
+{% block header %}<h1 class="h1">Confirmar Eliminacion</h1>{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card border-danger card-register mx-auto mt-5">
+      <div class="card-header">Eliminar Cliente</div>
+        <div class="card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="confirmaeliminacion">¿ Esta Seguro de Eliminar el Cliente {{ object.nombre }} ?</label>
+                </div>
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+                <a class="btn btn-info" href="{% url 'listarcliente' %}">Cancelar</a>
+              </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

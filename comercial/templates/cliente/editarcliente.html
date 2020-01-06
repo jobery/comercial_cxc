@@ -1,19 +1,20 @@
+
 {% extends 'base/base.html' %}
 {% block title %}
-Crear Cliente
+Editar Cliente
 {% endblock %}
 {% block header %}
-<h1 class="h1">Clientes</h1>
+<h1 class="h1">Cliente</h1>
 {% endblock %}
 {% block content %}
 <div class="container">
-    <div class="card border-success card-register mx-auto mt-5">
-      <div class="card-header">Crear Cliente</div>
+    <div class="card border-warning card-register mx-auto mt-5">
+      <div class="card-header">Editar Cliente</div>
         <div class="card-body">
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit" class="btn btn-success">Crear</button>
+                <button type="submit" class="btn btn-warning">Actualizar</button>
                 <a class="btn btn-info" href="{% url 'listarcliente' %}">Cancelar</a>
             </form>
         </div>
