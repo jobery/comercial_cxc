@@ -1,0 +1,77 @@
+
+{% extends 'base/base.html' %}
+{% block title %}Lista Cargos{% endblock %}
+{% block header %}
+<h1 class="h1">Lista de Cargos</h1>
+{% endblock %}
+{% block content %}
+<div class="btn-group-toggle" data-toggle="buttons">
+    <a class="btn btn-success" href="{% url 'crearcargo' %}" role="button">Crear Cargo</a>
+</div>
+<table class="table table-striped ">
+    <thead class="table-dark">
+        <tr>
+            <td>Id</td>
+            <td>Cliente</td>
+            <td>Fecha</td>
+            <td>Documento</td>
+            <td>Cargo</td>
+            <td>Abono</td>
+            <td>Saldo</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% if object_list %}
+        {% for cargo in object_list %}
+        <tr>
+            <td>{{ cargo.id }}</td>
+            <td>{{ cargo.cliente.nombre }}</td>
+            <td>{{ cargo.fecha }}</td>
+            <td>{{ cargo.documento }}</td>
+            <td>{{ cargo.val_cargo }}</td>
+            <td>{{ cargo.val_abono }}</td> 
+            <td>{{ cargo.val_saldo }}</td> 
+            <td>
+                <a class="btn btn-warning" href="{% url 'editarcargo' cargo.id %}" role="button">Editar</a>
+                <a class="btn btn-danger" href="{% url 'eliminarcargo' cargo.id %}" role="button">Eliminar</a>                           
+            </td>
+        </tr>
+        {% endfor %}
+        {% for clientes in object_list.cliente_set.all %}
+        <tr>
+            <td>{{ clientes.id }}</td>
+            <td>{{ clientes.nombre }}</td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td> 
+            <td>5</td> 
+            <td>6</td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td>3</td>
+            <td>vacio</td>
+            <td>{{ clientes.cliente }}</td>
+            <td></td>
+            <td></td>
+            <td></td> 
+            <td></td> 
+            <td></td>
+        </tr>        
+        {% else %}
+        <tr>
+            <td><h2 class="h2">No Existe Registros</h2></td>
+        </tr>
+        {% endif %}
+    </tbody>    
+</table>
+<ul>
+    <li>fin0</li>
+    {% for key, value in object_list.items %}
+      <li>{{ key }} : {{ value }}</li>
+    {% endfor %}
+    <li>fin1</li>
+    <li>fin2</li>
+ </ul>
+{% endblock %}

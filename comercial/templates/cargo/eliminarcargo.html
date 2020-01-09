@@ -1,19 +1,19 @@
 
 {% extends 'base/base.html' %}
-{% block title %}Eliminar Cliente{% endblock %}
-{% block header %}<h1 class="h1">Cliente</h1>{% endblock %}
+{% block title %}Eliminar Cargo{% endblock %}
+{% block header %}<h1 class="h1">Cargo</h1>{% endblock %}
 {% block content %}
 <div class="container">
     <div class="card card-register mx-auto mt-5">
-      <div class="card-header">Eliminar Cliente</div>
+      <div class="card-header">Eliminar Cargo</div>
         <div class="card-body">
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="form-group">
-                  <label for="confirmaeliminacion">¿ Esta Seguro de Eliminar el Cliente {{ object.nombre }} ?</label>
+                  <label for="confirmaeliminacion">¿ Esta Seguro de Eliminar el Cargo {{ object.documento }} ?</label>
                 </div>
                 <button type="submit" class="btn btn-danger">Eliminar</button>
-                <a class="btn btn-info" href="{% url 'listarcliente' %}">Cancelar</a>
+                <a class="btn btn-info" href="{% url 'listarcargo' %}">Cancelar</a>
               </form>
         </div>
     </div>

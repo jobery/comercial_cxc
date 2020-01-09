@@ -8,12 +8,32 @@ Editar Cliente
 {% endblock %}
 {% block content %}
 <div class="container">
-    <div class="card border-warning card-register mx-auto mt-5">
+    <div class="card card-register mx-auto mt-5">
       <div class="card-header">Editar Cliente</div>
         <div class="card-body">
             <form action="" method="post">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <!-- {{ form.as_p }} -->
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" name="nombre" value = "{{ object.nombre }}" placeholder="Nombre de Cliente">
+                </div>
+                <div class="form-group">
+                    <label for="dui">N° DUI:</label>
+                    <input type="text" class="form-control" name="dui" value = "{{ object.dui }}" placeholder="Numero de DUI"">
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Direccion:</label>
+                    <textarea class="form-control" name="direccion" rows="5">{{ object.direccion }}</textarea>                    
+                </div>
+                <div class="form-group">
+                    <label for="dui">Telefono:</label>
+                    <input type="text" class="form-control" name="telefono" value = "{{ object.telefono }}" placeholder="Numero de Telefono"">
+                </div>  
+                <div class="form-group">
+                    <label for="dui">Correo:</label>
+                    <input type="email" class="form-control" name="email" value = "{{ object.email }}" placeholder="correo@ejemplo.com"">
+                </div> 
                 <button type="submit" class="btn btn-warning">Actualizar</button>
                 <a class="btn btn-info" href="{% url 'listarcliente' %}">Cancelar</a>
             </form>

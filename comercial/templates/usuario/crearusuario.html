@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+{% block title %}
+Crear Usuario
+{% endblock %}
+{% block header %}
+<h1 class="h1">Usuario</h1>
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="card card-register mx-auto mt-5">
+      <div class="card-header">Crear Usuario</div>
+        <div class="card-body">
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="usuario">Usuario</label>
+                  <input type="text" class="form-control" name="username" placeholder="Ingrese Usuario">
+                  <small id="UserlHelp" class="form-text text-muted">Requerido. 150 carácteres como máximo. Únicamente letras, dígitos y @/./+/-/_</small>
+                </div>
+                <div class="form-group">
+                    <label for="usuario">Nombres:</label>
+                    <input type="text" class="form-control" name="first_name" placeholder="Digite Nombres">
+                </div>
+                <div class="form-group">
+                    <label for="usuario">Apellidos:</label>
+                    <input type="text" class="form-control" name="last_name" placeholder="Digite Apellidos">
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo:</label>
+                    <input type="email" class="form-control" name="email" placeholder="name@example.com">
+                  </div>                                                
+                <div class="form-group">
+                  <label for="Password1">Contraseña:</label>
+                  <input type="password" class="form-control" name="password1" placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                    <label for="Password2">Contraseña (confirmación):</label>
+                    <input type="password" class="form-control" name="password2" placeholder="Confirme Contraseña">
+                    <small id="UserlHelp" class="form-text text-muted">Para verificar, introduzca la misma contraseña anterior.</small>
+                  </div>                
+                <button type="submit" class="btn btn-success">Crear</button>
+                <a class="btn btn-info" href="{% url 'index' %}">Cancelar</a>
+              </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -2,8 +2,8 @@ from django.shortcuts import render,redirect
 from django.views.generic import CreateView,UpdateView,DeleteView,ListView
 from django.urls import reverse_lazy
 
-from .models import Cliente
-from .forms import ClienteForm
+from .models import *
+from .forms import *
 # Create your views here.
 
 class CreateCliente(CreateView):
@@ -27,6 +27,29 @@ class DeleteCliente(DeleteView):
     form_class = ClienteForm
     template_name = 'cliente/eliminarcliente.html'
     success_url = reverse_lazy('listarcliente')
+
+class ListCargo(ListView):
+    model = Cargo
+    template_name = 'cargo/listarcargo.html'    
+
+class CreateCargo(CreateView):
+    model = Cargo
+    form_class = CargoForm
+    template_name = 'cargo/crearcargo.html'
+    success_url = reverse_lazy('listarcargo')
+
+class UpdateCargo(UpdateView):  
+    model = Cargo
+    form_class = CargoForm
+    template_name = 'cargo/editarcargo.html'
+    success_uls = reverse_lazy('listarcargo')
+
+class DeleteCargo(DeleteView):
+    model = Cargo
+    form_class = CargoForm
+    template_name = 'cargo/eleminarcargo.html'
+    success_url = reverse_lazy('listarcargo')
+
 
 def index(request):
     return render(request,'index.html')
