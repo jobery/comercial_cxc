@@ -42,7 +42,7 @@ class UpdateCargo(UpdateView):
     model = Cargo
     form_class = CargoForm
     template_name = 'cargo/editarcargo.html'
-    success_uls = reverse_lazy('listarcargo')
+    success_url = reverse_lazy('listarcargo')
 
 class DeleteCargo(DeleteView):
     model = Cargo

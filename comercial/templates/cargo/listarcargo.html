@@ -18,6 +18,7 @@
             <td>Cargo</td>
             <td>Abono</td>
             <td>Saldo</td>
+            <td>Acciones</td>
         </tr>
     </thead>
     <tbody>
@@ -36,29 +37,7 @@
                 <a class="btn btn-danger" href="{% url 'eliminarcargo' cargo.id %}" role="button">Eliminar</a>                           
             </td>
         </tr>
-        {% endfor %}
-        {% for clientes in object_list.cliente_set.all %}
-        <tr>
-            <td>{{ clientes.id }}</td>
-            <td>{{ clientes.nombre }}</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td> 
-            <td>5</td> 
-            <td>6</td>
-        </tr>
-        {% endfor %}
-        <tr>
-            <td>3</td>
-            <td>vacio</td>
-            <td>{{ clientes.cliente }}</td>
-            <td></td>
-            <td></td>
-            <td></td> 
-            <td></td> 
-            <td></td>
-        </tr>        
+        {% endfor %}    
         {% else %}
         <tr>
             <td><h2 class="h2">No Existe Registros</h2></td>
@@ -66,12 +45,4 @@
         {% endif %}
     </tbody>    
 </table>
-<ul>
-    <li>fin0</li>
-    {% for key, value in object_list.items %}
-      <li>{{ key }} : {{ value }}</li>
-    {% endfor %}
-    <li>fin1</li>
-    <li>fin2</li>
- </ul>
 {% endblock %}

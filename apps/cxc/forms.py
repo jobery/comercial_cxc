@@ -14,3 +14,9 @@ class CargoForm(forms.ModelForm):
             'fecha',
             'documento',
             'val_cargo',]
+        widgets = {
+            'cliente': forms.Select(attrs={'class':'form-control'}),
+            'fecha': forms.DateInput(attrs={'class':'form-control','type':'date'},format='%Y-%m-%d'),
+            'documento': forms.TextInput(attrs={'class':'form-control'}),
+            'val_cargo': forms.NumberInput(attrs={'class':'form-control'}),
+        }

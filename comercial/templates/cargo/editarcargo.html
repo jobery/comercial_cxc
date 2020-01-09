@@ -16,21 +16,6 @@ Editar Cargo
                 {{ form.as_p }}
                 <button type="submit" class="btn btn-warning">Actualizar</button>
                 <a class="btn btn-info" href="{% url 'listarcargo' %}">Cancelar</a>
-
-                  {% for field in form %}
-                        <div class="form-group">
-                            {{ field.errors }}
-                            <textarea name="" id="" cols="30" rows="10">{{ field.label_tag }}</textarea>
-                            <textarea name="" id="" cols="30" rows="10">{{ field }}</textarea>
-                            <textarea name="" id="" cols="30" rows="10">{{ form.documento.id_for_label }}</textarea>
-                            <label for="{{ form.documento.id_for_label }}">Documento:</label>
-                            {{ form.subject|addcss:'form-control' }} 
-                            {{ field.label_tag }} {{ field }}
-                            {% if field.help_text %}
-                            <p class="help">{{ field.help_text|safe }}</p>
-                            {% endif %}
-                        </div>
-                    {% endfor %}
             </form>
         </div>
     </div>
