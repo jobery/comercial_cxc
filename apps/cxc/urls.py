@@ -4,7 +4,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('',index,name='index'),
+    path('',ListCargo.as_view(),name='cxc'),
     path('crearcliente/',CreateCliente.as_view(),name='crearcliente'),
     path('listarcliente/',ListCliente.as_view(),name='listarcliente'),
     path('editarcliente/<int:pk>',UpdateCliente.as_view(),name='editarcliente'),
