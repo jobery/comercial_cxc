@@ -13,4 +13,8 @@ urlpatterns = [
     path('crearcargo/',CreateCargo.as_view(),name='crearcargo'),
     path('editarcargo/<int:pk>',UpdateCargo.as_view(),name='editarcargo'),
     path('eliminarcargo/<int:pk>',DeleteCargo.as_view(),name='eliminarcargo'),
+    path('listarabono/',ListAbono.as_view(),name='listarabono'),
+    path('crearabono/',CreateAbono.as_view(),name='crearabono'),
+    path('editarabono/<int:pk>',UpdateAbono.as_view(),name='editarabono'),
+    path('eliminarabono/<int:pk>',DeleteAbono.as_view(),name='eliminarabono'),    
 ]

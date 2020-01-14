@@ -24,7 +24,7 @@ class Cargo(models.Model):
     documento = models.CharField("Documento",max_length = 15,blank = False,null = False)
     val_cargo = models.DecimalField("Cargo",max_digits = 12,decimal_places = 2)
     val_abono = models.DecimalField("Abono",max_digits = 12,decimal_places = 2,default = 0)
-    val_saldo = models.DecimalField("Saldo",max_digits = 12,decimal_places = 2,default = 0)
+    val_saldo = models.DecimalField("Saldo",max_digits = 12,decimal_places = 2)
 
     class Meta():
         verbose_name = 'Cargo'
