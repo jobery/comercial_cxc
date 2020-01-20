@@ -96,35 +96,39 @@ class DeleteAbono(DeleteView):
     form_class = AbonoForm
     template_name = 'cxc/abono/eliminarabono.html'
     success_url = reverse_lazy('listarabono')
-    
+
+    # def post(self,request,*args,**kwargs):
+    #     self.object = self.get_object
+    #     form = self.form_class(request.POST)
 
 
-class CreateAbonos(CreateView):
-    model = Abono
-    template_name = 'cxc/abono/crearabono.html'
-    form_class = AbonoForm
-    seccond_form_class = CargoForm
-    sucess_url = reverse_lazy('listarabono')
 
-    def get_context_data(self,**kwargs):
-        context = super(CreateAbonos,self).get_context_data(**kwargs)
-        if 'form' not in context:
-            context['form'] = self.form_class(self.request.GET)
-        if 'form2' not in context:
-            context['form2'] = self.seccond_form_class(self.request.GET)
-        return context
+# class CreateAbonos(CreateView):
+#     model = Abono
+#     template_name = 'cxc/abono/crearabono.html'
+#     form_class = AbonoForm
+#     seccond_form_class = CargoForm
+#     sucess_url = reverse_lazy('listarabono')
 
-    def post(self,request,*args,**kwargs):
-        self.object = self.get_object
-        form = self.form_class(request.POST)
-        form2 = self.seccond_form_class(request.POST)
-        if form.is_valid() and form2.is_valid():
-            abono = form.save(commit = False)
-            abono.cargo = form2.save()
-            abono.save()
-            return HttpResponseRedirect(self.get_success_url())
-        else:
-            return self.render_to_response(self.get_context_data(form=form,form2=form2))
+#     def get_context_data(self,**kwargs):
+#         context = super(CreateAbonos,self).get_context_data(**kwargs)
+#         if 'form' not in context:
+#             context['form'] = self.form_class(self.request.GET)
+#         if 'form2' not in context:
+#             context['form2'] = self.seccond_form_class(self.request.GET)
+#         return context
+
+#     def post(self,request,*args,**kwargs):
+#         self.object = self.get_object
+#         form = self.form_class(request.POST)
+#         form2 = self.seccond_form_class(request.POST)
+#         if form.is_valid() and form2.is_valid():
+#             abono = form.save(commit = False)
+#             abono.cargo = form2.save()
+#             abono.save()
+#             return HttpResponseRedirect(self.get_success_url())
+#         else:
+#             return self.render_to_response(self.get_context_data(form=form,form2=form2))
 
 
 def index(request):

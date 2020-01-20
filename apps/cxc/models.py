@@ -32,7 +32,7 @@ class Cargo(models.Model):
         ordering = ['id']    
     
     def __str__(self):
-        return '# %s - (%s / %s) $ %s' % (self.id,self.cliente,self.documento,self.val_cargo)
+        return '# %s - (%s / %s) Saldo: $ %s' % (self.id,self.cliente,self.documento,self.val_saldo)
 
 class Abono(models.Model):
     id = models.AutoField(primary_key = True)

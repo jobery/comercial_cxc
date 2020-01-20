@@ -20,6 +20,11 @@ class CargoForm(forms.ModelForm):
             'documento': forms.TextInput(attrs={'class':'form-control',}),
             'val_cargo': forms.NumberInput(attrs={'class':'form-control',}),
         }
+    # campo por default de otro campo del modelo   
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        cleaned_data['val_saldo'] = cleaned_data['val_cargo']
+        return cleaned_data
 
 class AbonoForm(forms.ModelForm):
     class Meta():
