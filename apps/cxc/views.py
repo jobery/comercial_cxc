@@ -97,73 +97,16 @@ class DeleteAbono(DeleteView):
     template_name = 'cxc/abono/eliminarabono.html'
     success_url = reverse_lazy('listarabono')
 
-    # def post(self,request,*args,**kwargs):
-    #     self.object = self.get_object
-    #     form = self.form_class(request.POST)
-
-
-
-# class CreateAbonos(CreateView):
-#     model = Abono
-#     template_name = 'cxc/abono/crearabono.html'
-#     form_class = AbonoForm
-#     seccond_form_class = CargoForm
-#     sucess_url = reverse_lazy('listarabono')
-
-#     def get_context_data(self,**kwargs):
-#         context = super(CreateAbonos,self).get_context_data(**kwargs)
-#         if 'form' not in context:
-#             context['form'] = self.form_class(self.request.GET)
-#         if 'form2' not in context:
-#             context['form2'] = self.seccond_form_class(self.request.GET)
-#         return context
-
-#     def post(self,request,*args,**kwargs):
-#         self.object = self.get_object
-#         form = self.form_class(request.POST)
-#         form2 = self.seccond_form_class(request.POST)
-#         if form.is_valid() and form2.is_valid():
-#             abono = form.save(commit = False)
-#             abono.cargo = form2.save()
-#             abono.save()
-#             return HttpResponseRedirect(self.get_success_url())
-#         else:
-#             return self.render_to_response(self.get_context_data(form=form,form2=form2))
-
-
-def index(request):
-    return render(request,'index.html')
-
-def CrearCliente(request):
-    if request.method == 'POST':
-        form = ClienteForm(request.POST)
+    def post(self,request,*args,**kwargs):
+        self.object = self.get_object
+        form = self.form_class(request.POST)
+        abono = Abono.objects.get(pk=form.instance.id)
+        form_cargo = Cargo.objects.get(pk=abono.cargo)
         if form.is_valid():
+            form_cargo.val_abono = form_cargo.val_abono - form.instance.val_abono
+            form_cargo.val_saldo = form_cargo.val_saldo + form.instance.val_abono
+            form_cargo.save()    
             form.save()
-            return redirect('listacliente')
-    else:
-        form = ClienteForm()
-        context = {'form':form}
-    return render(request,'cxc/cliente/crearcliente.html',context)
-
-def ListaCliente(request):
-    cliente = Cliente.objects.all()
-    context = {'clientes':cliente}
-    return render(request,'cxc/cliente/listacliente.html',context)
-
-def EditarCliente(request,id):
-    cliente = Cliente.objects.get(id= id)
-    if request.method == 'GET':
-        form = ClienteForm(instance = cliente)
-    else:
-        form = ClienteForm(request.POST,instance = cliente)
-        if form.is_valid():
-            form.save()
-        return redirect('listacliente')
-    return render(request,'cxc/cliente/crearcliente.html',{'form':form})
-
-def EliminarCliente(request,id):
-    cliente = Cliente.objects.get(id = id)
-    if request.method == 'POST':
-        cliente.delete()
-        return redirect('listacliente')
-    return render(request,'cxc/cliente/eliminarcliente.html',{'cliente':cliente})
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return self.render_to_response(self.get_context_data(form=form))      

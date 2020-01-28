@@ -21,5 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cxc/', include('apps.cxc.urls')),
     path('usuario/', include('apps.usuario.urls')),
+    path('consignacion/', include('apps.consignacion.urls')),
     path('',LoginView.as_view(template_name='index.html'),name='login'),
 ]
